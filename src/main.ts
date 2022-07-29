@@ -1,38 +1,16 @@
 import "./style.css";
-import { Component } from "./Component";
 import { ComponentBuilder } from "./ComponentBuilder";
 
-const c1 = new ComponentBuilder("c1")
+const bg = new ComponentBuilder("bg")
+  .setPadding("1rem")
   .setWidth("50vw")
   .setHeight("50vh")
-  .setBackgroundColor("red");
+  .setBackgroundColor("rgb(0, 0, 0)");
 
-buildDOM(c1.build());
+const title = new ComponentBuilder("title")
+  .setValue("TITLE")
+  .setFontColor("white")
+  .setTextAlign("center");
 
-function buildDOM(root: Component) {
-  if (!root) return;
-
-  let q: Component[] = [];
-  q.push(root);
-
-  while (q.length > 0) {
-    let component = q.shift();
-    if (component) {
-      if (component === root) {
-        document.body.insertAdjacentHTML("beforeend", root.getHTML());
-      }
-      const children = component.children.length;
-      if (children > 0) {
-        for (let i = 0; i < children; i++) {
-          const parent = document.getElementById(component.id);
-          const child = component.children[i];
-          if (parent) parent.insertAdjacentHTML("beforeend", child.getHTML());
-          q.push(child);
-        }
-      }
-    }
-  }
-
-  console.log(c1.build());
-  console.log(document.body.innerHTML);
-}
+bg.add(title.getComponent());
+bg.build();

@@ -1,6 +1,4 @@
-import { IComponent } from "./IComponent";
-
-export class Component implements IComponent {
+export class Component {
   id: string;
   props: Map<string, string>;
   children: Component[];

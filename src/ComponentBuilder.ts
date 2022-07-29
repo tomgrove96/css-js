@@ -62,11 +62,39 @@ export class ComponentBuilder {
     return this;
   }
 
+  build() {
+    this.buildComponent(this.component);
+  }
+
+  buildComponent(root: Component) {
+    if (!root) return;
+
+    let q: Component[] = [];
+    q.push(root);
+
+    while (q.length > 0) {
+      let component = q.shift();
+      if (!component) return;
+
+      if (component === root)
+        document.body.insertAdjacentHTML("beforeend", root.getHTML());
+
+      const children = component.children.length;
+
+      for (let i = 0; i < children; i++) {
+        const parent = document.getElementById(component.id);
+        const child = component.children[i];
+        if (parent) parent.insertAdjacentHTML("beforeend", child.getHTML());
+        q.push(child);
+      }
+    }
+  }
+
   add(component: Component) {
     this.component.children.push(component);
   }
 
-  build(): Component {
+  getComponent(): Component {
     return this.component;
   }
 }
