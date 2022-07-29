@@ -6,13 +6,13 @@ const bg = new ComponentBuilder("bg")
   .setWidth("100vw")
   .setHeight("100vh")
   .setBorder("3px solid red")
-  .setBorderRadius("10px")
   .setBackgroundColor("rgb(0, 0, 0)");
 
 const title = new ComponentBuilder("title")
   .setValue("TITLE")
   .setFontColor("white")
-  .setTextAlign("center");
+  .setTextAlign("center")
+  .getComponent();
 
 const box = new ComponentBuilder("box")
   .setPosition("fixed")
@@ -22,9 +22,10 @@ const box = new ComponentBuilder("box")
   .setHeight("100px")
   .setBorderRadiusTopLeft("10px")
   .setBorderRadiusBottomRight("10px")
-  .setBackgroundColor("red");
+  .setBackgroundColor("red")
+  .getComponent();
 
-bg.add(title.getComponent());
-bg.add(box.getComponent());
+bg.add(title);
+bg.add(box);
 
 bg.build();
