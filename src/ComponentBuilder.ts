@@ -1,4 +1,5 @@
-import { Component } from "./Component";
+import { Component } from "./components/Component";
+import { alignment, unit, position, zIndex, display, overflow, fontStyle } from "./Types";
 
 export class ComponentBuilder {
   private component: Component;
@@ -12,127 +13,155 @@ export class ComponentBuilder {
     return this;
   }
 
-  setPosition(position: string): ComponentBuilder {
+  translate(x: unit, y: unit): ComponentBuilder {
+    const transform = this.component.props.get("transform");
+    if (!transform) {
+      this.component.props.set("transform", `translate(${x}, ${y}) `);
+      return this;
+    }
+    const temp = transform + ` translate(${x}, ${y})`;
+    this.component.props.set("transform", temp);
+    return this;
+  }
+
+  translateX(x: unit): ComponentBuilder {
+    const transform = this.component.props.get("transform");
+    if (!transform) {
+      this.component.props.set("transform", `translateX(${x})`);
+      return this;
+    }
+    const temp = transform + ` translateX(${x}) `;
+    this.component.props.set("transform", temp);
+    return this;
+  }
+
+  translateY(y: unit): ComponentBuilder {
+    const transform = this.component.props.get("transform");
+    if (!transform) {
+      this.component.props.set("transform", `translateY(${y})`);
+      return this;
+    }
+    const temp = transform + ` translateY(${y})`;
+    this.component.props.set("transform", temp);
+    return this;
+  }
+
+  setPosition(position: position): ComponentBuilder {
     this.component.props.set("position", position);
     return this;
   }
 
-  setTop(top: string): ComponentBuilder {
+  setTop(top: unit): ComponentBuilder {
     this.component.props.set("top", top);
     return this;
   }
 
-  setBottom(bottom: string): ComponentBuilder {
+  setBottom(bottom: unit): ComponentBuilder {
     this.component.props.set("bottom", bottom);
     return this;
   }
 
-  setLeft(left: string): ComponentBuilder {
+  setLeft(left: unit): ComponentBuilder {
     this.component.props.set("left", left);
     return this;
   }
 
-  setRight(right: string): ComponentBuilder {
+  setRight(right: unit): ComponentBuilder {
     this.component.props.set("right", right);
     return this;
   }
 
-  setZIndex(zIndex: string): ComponentBuilder {
-    this.component.props.set("z-index", zIndex);
+  setZIndex(zIndex: zIndex): ComponentBuilder {
+    this.component.props.set("z-index", `${zIndex}`);
     return this;
   }
 
-  setDisplay(display: string): ComponentBuilder {
+  setDisplay(display: display): ComponentBuilder {
     this.component.props.set("display", display);
     return this;
   }
 
-  setOverflow(overflow: string): ComponentBuilder {
+  setOverflow(overflow: overflow): ComponentBuilder {
     this.component.props.set("overflow", overflow);
     return this;
   }
 
-  setOverflowStyle(overflowStyle: string): ComponentBuilder {
-    this.component.props.set("overflow-style", overflowStyle);
-    return this;
-  }
-
-  setWidth(width: string): ComponentBuilder {
+  setWidth(width: unit): ComponentBuilder {
     this.component.props.set("width", width);
     return this;
   }
 
-  setMinWidth(minWidth: string): ComponentBuilder {
+  setMinWidth(minWidth: unit): ComponentBuilder {
     this.component.props.set("min-width", minWidth);
     return this;
   }
 
-  setMaxWidth(maxWidth: string): ComponentBuilder {
+  setMaxWidth(maxWidth: unit): ComponentBuilder {
     this.component.props.set("max-width", maxWidth);
     return this;
   }
 
-  setHeight(height: string): ComponentBuilder {
+  setHeight(height: unit): ComponentBuilder {
     this.component.props.set("height", height);
     return this;
   }
 
-  setMaxHeight(maxHeight: string): ComponentBuilder {
+  setMaxHeight(maxHeight: unit): ComponentBuilder {
     this.component.props.set("max-height", maxHeight);
     return this;
   }
 
-  setMinHeight(minHeight: string): ComponentBuilder {
+  setMinHeight(minHeight: unit): ComponentBuilder {
     this.component.props.set("min-height", minHeight);
     return this;
   }
 
-  setPadding(padding: string): ComponentBuilder {
+  setPadding(padding: unit): ComponentBuilder {
     this.component.props.set("padding", padding);
     return this;
   }
 
-  setPaddingTop(paddingTop: string): ComponentBuilder {
+  setPaddingTop(paddingTop: unit): ComponentBuilder {
     this.component.props.set("padding-top", paddingTop);
     return this;
   }
 
-  setPaddingBottom(paddingBottom: string): ComponentBuilder {
+  setPaddingBottom(paddingBottom: unit): ComponentBuilder {
     this.component.props.set("padding-bottom", paddingBottom);
     return this;
   }
 
-  setPaddingLeft(paddingLeft: string): ComponentBuilder {
+  setPaddingLeft(paddingLeft: unit): ComponentBuilder {
     this.component.props.set("padding-left", paddingLeft);
     return this;
   }
 
-  setPaddingRight(paddingRight: string): ComponentBuilder {
+  setPaddingRight(paddingRight: unit): ComponentBuilder {
     this.component.props.set("padding-right", paddingRight);
     return this;
   }
 
-  setMargin(margin: string): ComponentBuilder {
+  setMargin(margin: unit): ComponentBuilder {
     this.component.props.set("margin", margin);
     return this;
   }
 
-  setMarginTop(marginTop: string): ComponentBuilder {
+  setMarginTop(marginTop: unit): ComponentBuilder {
     this.component.props.set("margin-top", marginTop);
     return this;
   }
 
-  setMarginBottom(marginBottom: string): ComponentBuilder {
+  setMarginBottom(marginBottom: unit): ComponentBuilder {
     this.component.props.set("margin-bottom", marginBottom);
     return this;
   }
 
-  setMarginLeft(marginLeft: string): ComponentBuilder {
+  setMarginLeft(marginLeft: unit): ComponentBuilder {
     this.component.props.set("margin-left", marginLeft);
     return this;
   }
 
-  setMarginRight(marginRight: string): ComponentBuilder {
+  setMarginRight(marginRight: unit): ComponentBuilder {
     this.component.props.set("margin-right", marginRight);
     return this;
   }
@@ -142,12 +171,12 @@ export class ComponentBuilder {
     return this;
   }
 
-  setFontSize(fontSize: string): ComponentBuilder {
+  setFontSize(fontSize: unit): ComponentBuilder {
     this.component.props.set("font-size", fontSize);
     return this;
   }
 
-  setFontWeight(fontWeight: string): ComponentBuilder {
+  setFontWeight(fontWeight: unit): ComponentBuilder {
     this.component.props.set("font-weight", fontWeight);
     return this;
   }
@@ -157,7 +186,7 @@ export class ComponentBuilder {
     return this;
   }
 
-  setFontStyle(fontStyle: string): ComponentBuilder {
+  setFontStyle(fontStyle: fontStyle): ComponentBuilder {
     this.component.props.set("font-style", fontStyle);
     return this;
   }
@@ -232,21 +261,66 @@ export class ComponentBuilder {
     return this;
   }
 
-  setBorderRadiusBottomRight(
-    borderRadiusBottomRight: string
-  ): ComponentBuilder {
-    this.component.props.set(
-      "border-bottom-right-radius",
-      borderRadiusBottomRight
-    );
+  setBorderRadiusBottomRight(borderRadiusBottomRight: string): ComponentBuilder {
+    this.component.props.set("border-bottom-right-radius", borderRadiusBottomRight);
     return this;
   }
 
   setBorderRadiusBottomLeft(borderRadiusBottomLeft: string): ComponentBuilder {
-    this.component.props.set(
-      "border-bottom-left-radius",
-      borderRadiusBottomLeft
-    );
+    this.component.props.set("border-bottom-left-radius", borderRadiusBottomLeft);
+    return this;
+  }
+
+  setGrid(columns: string, rows: string): ComponentBuilder {
+    this.setDisplay("grid");
+    this.component.props.set("grid-template-columns", `repeat(${columns}, 1fr)`);
+    this.component.props.set("grid-template-rows", `repeat(${rows}, 1fr)`);
+    return this;
+  }
+
+  setGridGap(gap: string): ComponentBuilder {
+    this.component.props.set("grid-gap", gap);
+    return this;
+  }
+
+  setGridRowGap(gap: string): ComponentBuilder {
+    this.component.props.set("grid-row-gap", gap);
+    return this;
+  }
+
+  setGridColumnGap(gap: string): ComponentBuilder {
+    this.component.props.set("grid-column-gap", gap);
+    return this;
+  }
+
+  setJustifyGridItems(justifyItems: string): ComponentBuilder {
+    this.component.props.set("justify-items", justifyItems);
+    return this;
+  }
+
+  setAlignGridItems(alignItems: string): ComponentBuilder {
+    this.component.props.set("align-items", alignItems);
+    return this;
+  }
+
+  setPlaceGridItems(placeItems: string): ComponentBuilder {
+    this.component.props.set("align-items", placeItems);
+    this.component.props.set("justify-items", placeItems);
+    return this;
+  }
+
+  setJustifyGridContent(justifyContent: alignment): ComponentBuilder {
+    this.component.props.set("justify-content", justifyContent);
+    return this;
+  }
+
+  setAlignGridContent(alignContent: string): ComponentBuilder {
+    this.component.props.set("align-content", alignContent);
+    return this;
+  }
+
+  setPlaceGridContent(placeContent: string): ComponentBuilder {
+    this.component.props.set("place-content", placeContent);
     return this;
   }
 
@@ -260,8 +334,7 @@ export class ComponentBuilder {
       const component = q.shift();
       if (!component) return;
 
-      if (component === root)
-        document.body.insertAdjacentHTML("beforeend", root.getHTML());
+      if (component === root) document.body.insertAdjacentHTML("beforeend", root.getHTML());
 
       const children = component.children.length;
       for (let i = 0; i < children; i++) {

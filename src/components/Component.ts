@@ -1,6 +1,6 @@
 export class Component {
   id: string;
-  props: Map<string, string>;
+  props: Map<string, string | string[]>;
   children: Component[];
 
   constructor(id: string) {
@@ -14,6 +14,7 @@ export class Component {
     let props = "";
     for (const [key, value] of this.props) {
       if (key === "value") continue;
+
       props += `${key}: ${value};`;
     }
     return props;
