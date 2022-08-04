@@ -1,5 +1,6 @@
 import "./style.css";
 import { ComponentBuilder } from "./ComponentBuilder";
+import * as Color from "./Color";
 
 const bg = new ComponentBuilder("bg")
   .setPadding("1rem")
@@ -11,12 +12,12 @@ const bg = new ComponentBuilder("bg")
   .setMaxWidth("75vw")
   .setMinHeight("50vh")
   .setBorder("3px solid red")
-  .setBackgroundColor("rgb(0, 0, 0)");
+  .setBackgroundColor(Color.DARK_GRAY);
 
 const box1 = new ComponentBuilder("box")
   .setBorderRadiusTopLeft("10px")
   .setBorderRadiusBottomRight("10px")
-  .setBackgroundColor("red")
+  .setBackgroundColor(Color.ANTIQUE_WHITE)
   .setWidth("32px")
   .setHeight("32px")
   .getComponent();
@@ -24,7 +25,7 @@ const box1 = new ComponentBuilder("box")
 const box2 = new ComponentBuilder("box")
   .setBorderRadiusTopLeft("10px")
   .setBorderRadiusBottomRight("10px")
-  .setBackgroundColor("red")
+  .setBackgroundColor(Color.DARK_CYAN)
   .setWidth("128px")
   .setHeight("128px")
   .getComponent();
@@ -32,7 +33,7 @@ const box2 = new ComponentBuilder("box")
 const box3 = new ComponentBuilder("box")
   .setBorderRadiusTopLeft("10px")
   .setBorderRadiusBottomRight("10px")
-  .setBackgroundColor("red")
+  .setBackgroundColor(Color.BLUE_VIOLET)
   .setWidth("128px")
   .setHeight("128px")
   .getComponent();
@@ -40,7 +41,7 @@ const box3 = new ComponentBuilder("box")
 const box4 = new ComponentBuilder("box")
   .setBorderRadiusTopLeft("10px")
   .setBorderRadiusBottomRight("10px")
-  .setBackgroundColor("red")
+  .setBackgroundColor(Color.BISQUE)
   .setWidth("128px")
   .setHeight("128px")
   .getComponent();
@@ -48,7 +49,7 @@ const box4 = new ComponentBuilder("box")
 const box5 = new ComponentBuilder("box")
   .setBorderRadiusTopLeft("10px")
   .setBorderRadiusBottomRight("10px")
-  .setBackgroundColor("red")
+  .setBackgroundColor(Color.FIRE_BRICK)
   .setWidth("128px")
   .setHeight("128px")
   .getComponent();
@@ -56,7 +57,7 @@ const box5 = new ComponentBuilder("box")
 const box6 = new ComponentBuilder("box")
   .setBorderRadiusTopLeft("10px")
   .setBorderRadiusBottomRight("10px")
-  .setBackgroundColor("red")
+  .setBackgroundColor(Color.BURLY_WOOD)
   .setWidth("128px")
   .setHeight("128px")
   .getComponent();

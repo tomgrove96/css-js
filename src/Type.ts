@@ -1,3 +1,5 @@
+import { RGB, RGBA } from "./Color";
+
 export type display =
   | "inline"
   | "block"
@@ -24,6 +26,44 @@ export type display =
   | "inherit";
 
 export type alignment = "start" | "end" | "center" | "left" | "right" | "normal";
+
+export type alignContent =
+  | "stretch"
+  | "center"
+  | "flex-start"
+  | "flex-end"
+  | "space-between"
+  | "space-around"
+  | "initial"
+  | "inherit";
+
+export type alignItems =
+  | "stretch"
+  | "center"
+  | "flex-start"
+  | "flex-end"
+  | "baseline"
+  | "initial"
+  | "inherit";
+
+export type alignSelf =
+  | "auto"
+  | "stretch"
+  | "center"
+  | "flex-start"
+  | "flex-end"
+  | "baseline"
+  | "initial"
+  | "inherit";
+
+export type backgroundColor = "";
+export type backgroundImage = "";
+export type backgroundPosition = "";
+export type backgroundSize = "";
+export type backgroundRepeat = "";
+export type backgroundOrigin = "";
+export type backgroundClip = "";
+export type backgroundAttachment = "";
 
 export type uom =
   | "cm"
@@ -58,3 +98,10 @@ export type zIndex = "auto" | number | "initial" | "inherit";
 export type overflow = "visible" | "hidden" | "clip" | "scroll" | "auto" | "initial" | "inherit";
 
 export type fontStyle = "normal" | "italic" | "oblique" | "initial" | "inherit";
+
+export interface Color {
+  r: number;
+  g: number;
+  b: number;
+  a?: number;
+}

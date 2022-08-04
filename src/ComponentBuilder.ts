@@ -1,5 +1,5 @@
-import { Component } from "./components/Component";
-import { alignment, unit, position, zIndex, display, overflow, fontStyle } from "./Types";
+import { Component } from "./Component";
+import { alignment, Color, unit, position, zIndex, display, overflow, fontStyle } from "./Type";
 
 export class ComponentBuilder {
   private component: Component;
@@ -216,8 +216,11 @@ export class ComponentBuilder {
     return this;
   }
 
-  setBackgroundColor(color: string): ComponentBuilder {
-    this.component.props.set("background-color", color);
+  setBackgroundColor(color: Color): ComponentBuilder {
+    let value = "";
+    if (!color.a) value = `rgb(${color.r}, ${color.g}, ${color.b})`;
+    if (color.a) value = `rgba(${color.r}, ${color.g}, ${color.b}, ${color.a})`;
+    this.component.props.set("background-color", value);
     return this;
   }
 
