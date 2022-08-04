@@ -1,5 +1,3 @@
-import { RGB, RGBA } from "./Color";
-
 export type display =
   | "inline"
   | "block"
