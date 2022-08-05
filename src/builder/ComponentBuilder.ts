@@ -182,8 +182,8 @@ export class ComponentBuilder {
     return this;
   }
 
-  setFontColor(color: string): ComponentBuilder {
-    this.component.props.set("color", color);
+  setFontColor(color: Type.Color): ComponentBuilder {
+    this.component.props.set("color", colorToString(color));
     return this;
   }
 

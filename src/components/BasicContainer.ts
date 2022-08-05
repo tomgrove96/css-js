@@ -1,8 +1,9 @@
+import { IComponent } from "./IComponent";
 import { ComponentBuilder } from "../builder/ComponentBuilder";
 import * as Color from "../Color";
 import * as Type from "../Type";
 
-export class BasicContainer {
+export class BasicContainer implements IComponent {
   private builder: ComponentBuilder;
 
   constructor(id: string, width: Type.unit, height: Type.unit) {
@@ -14,8 +15,8 @@ export class BasicContainer {
       .setBorderRadius("1rem");
   }
 
-  add(builder: ComponentBuilder) {
-    this.builder.add(builder);
+  add(component: IComponent) {
+    this.builder.add(component.getBuilder());
   }
 
   pack() {
