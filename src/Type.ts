@@ -63,6 +63,24 @@ export type backgroundOrigin = "";
 export type backgroundClip = "";
 export type backgroundAttachment = "";
 
+export type px = `${number}px`;
+export type pt = `${number}pt`;
+export type cm = `${number}cm`;
+
+export type borderWidth = "thin" | "medium" | "thick" | px | pt | cm;
+
+export type borderStyle =
+  | "dotted"
+  | "dashed"
+  | "solid"
+  | "double"
+  | "groove"
+  | "ridge"
+  | "inset"
+  | "outset"
+  | "none"
+  | "hidden";
+
 export type uom =
   | "cm"
   | "mm"

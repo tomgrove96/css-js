@@ -1,5 +1,6 @@
 import { Component } from "./Component";
-import { alignment, Color, unit, position, zIndex, display, overflow, fontStyle } from "./Type";
+import { colorToString } from "../Util";
+import * as Type from "../Type";
 
 export class ComponentBuilder {
   private component: Component;
@@ -13,7 +14,7 @@ export class ComponentBuilder {
     return this;
   }
 
-  translate(x: unit, y: unit): ComponentBuilder {
+  translate(x: Type.unit, y: Type.unit): ComponentBuilder {
     const transform = this.component.props.get("transform");
     if (!transform) {
       this.component.props.set("transform", `translate(${x}, ${y}) `);
@@ -24,7 +25,7 @@ export class ComponentBuilder {
     return this;
   }
 
-  translateX(x: unit): ComponentBuilder {
+  translateX(x: Type.unit): ComponentBuilder {
     const transform = this.component.props.get("transform");
     if (!transform) {
       this.component.props.set("transform", `translateX(${x})`);
@@ -35,7 +36,7 @@ export class ComponentBuilder {
     return this;
   }
 
-  translateY(y: unit): ComponentBuilder {
+  translateY(y: Type.unit): ComponentBuilder {
     const transform = this.component.props.get("transform");
     if (!transform) {
       this.component.props.set("transform", `translateY(${y})`);
@@ -46,122 +47,122 @@ export class ComponentBuilder {
     return this;
   }
 
-  setPosition(position: position): ComponentBuilder {
+  setPosition(position: Type.position): ComponentBuilder {
     this.component.props.set("position", position);
     return this;
   }
 
-  setTop(top: unit): ComponentBuilder {
+  setTop(top: Type.unit): ComponentBuilder {
     this.component.props.set("top", top);
     return this;
   }
 
-  setBottom(bottom: unit): ComponentBuilder {
+  setBottom(bottom: Type.unit): ComponentBuilder {
     this.component.props.set("bottom", bottom);
     return this;
   }
 
-  setLeft(left: unit): ComponentBuilder {
+  setLeft(left: Type.unit): ComponentBuilder {
     this.component.props.set("left", left);
     return this;
   }
 
-  setRight(right: unit): ComponentBuilder {
+  setRight(right: Type.unit): ComponentBuilder {
     this.component.props.set("right", right);
     return this;
   }
 
-  setZIndex(zIndex: zIndex): ComponentBuilder {
+  setZIndex(zIndex: Type.zIndex): ComponentBuilder {
     this.component.props.set("z-index", `${zIndex}`);
     return this;
   }
 
-  setDisplay(display: display): ComponentBuilder {
+  setDisplay(display: Type.display): ComponentBuilder {
     this.component.props.set("display", display);
     return this;
   }
 
-  setOverflow(overflow: overflow): ComponentBuilder {
+  setOverflow(overflow: Type.overflow): ComponentBuilder {
     this.component.props.set("overflow", overflow);
     return this;
   }
 
-  setWidth(width: unit): ComponentBuilder {
+  setWidth(width: Type.unit): ComponentBuilder {
     this.component.props.set("width", width);
     return this;
   }
 
-  setMinWidth(minWidth: unit): ComponentBuilder {
+  setMinWidth(minWidth: Type.unit): ComponentBuilder {
     this.component.props.set("min-width", minWidth);
     return this;
   }
 
-  setMaxWidth(maxWidth: unit): ComponentBuilder {
+  setMaxWidth(maxWidth: Type.unit): ComponentBuilder {
     this.component.props.set("max-width", maxWidth);
     return this;
   }
 
-  setHeight(height: unit): ComponentBuilder {
+  setHeight(height: Type.unit): ComponentBuilder {
     this.component.props.set("height", height);
     return this;
   }
 
-  setMaxHeight(maxHeight: unit): ComponentBuilder {
+  setMaxHeight(maxHeight: Type.unit): ComponentBuilder {
     this.component.props.set("max-height", maxHeight);
     return this;
   }
 
-  setMinHeight(minHeight: unit): ComponentBuilder {
+  setMinHeight(minHeight: Type.unit): ComponentBuilder {
     this.component.props.set("min-height", minHeight);
     return this;
   }
 
-  setPadding(padding: unit): ComponentBuilder {
+  setPadding(padding: Type.unit): ComponentBuilder {
     this.component.props.set("padding", padding);
     return this;
   }
 
-  setPaddingTop(paddingTop: unit): ComponentBuilder {
+  setPaddingTop(paddingTop: Type.unit): ComponentBuilder {
     this.component.props.set("padding-top", paddingTop);
     return this;
   }
 
-  setPaddingBottom(paddingBottom: unit): ComponentBuilder {
+  setPaddingBottom(paddingBottom: Type.unit): ComponentBuilder {
     this.component.props.set("padding-bottom", paddingBottom);
     return this;
   }
 
-  setPaddingLeft(paddingLeft: unit): ComponentBuilder {
+  setPaddingLeft(paddingLeft: Type.unit): ComponentBuilder {
     this.component.props.set("padding-left", paddingLeft);
     return this;
   }
 
-  setPaddingRight(paddingRight: unit): ComponentBuilder {
+  setPaddingRight(paddingRight: Type.unit): ComponentBuilder {
     this.component.props.set("padding-right", paddingRight);
     return this;
   }
 
-  setMargin(margin: unit): ComponentBuilder {
+  setMargin(margin: Type.unit): ComponentBuilder {
     this.component.props.set("margin", margin);
     return this;
   }
 
-  setMarginTop(marginTop: unit): ComponentBuilder {
+  setMarginTop(marginTop: Type.unit): ComponentBuilder {
     this.component.props.set("margin-top", marginTop);
     return this;
   }
 
-  setMarginBottom(marginBottom: unit): ComponentBuilder {
+  setMarginBottom(marginBottom: Type.unit): ComponentBuilder {
     this.component.props.set("margin-bottom", marginBottom);
     return this;
   }
 
-  setMarginLeft(marginLeft: unit): ComponentBuilder {
+  setMarginLeft(marginLeft: Type.unit): ComponentBuilder {
     this.component.props.set("margin-left", marginLeft);
     return this;
   }
 
-  setMarginRight(marginRight: unit): ComponentBuilder {
+  setMarginRight(marginRight: Type.unit): ComponentBuilder {
     this.component.props.set("margin-right", marginRight);
     return this;
   }
@@ -171,12 +172,12 @@ export class ComponentBuilder {
     return this;
   }
 
-  setFontSize(fontSize: unit): ComponentBuilder {
+  setFontSize(fontSize: Type.unit): ComponentBuilder {
     this.component.props.set("font-size", fontSize);
     return this;
   }
 
-  setFontWeight(fontWeight: unit): ComponentBuilder {
+  setFontWeight(fontWeight: Type.unit): ComponentBuilder {
     this.component.props.set("font-weight", fontWeight);
     return this;
   }
@@ -186,7 +187,7 @@ export class ComponentBuilder {
     return this;
   }
 
-  setFontStyle(fontStyle: fontStyle): ComponentBuilder {
+  setFontStyle(fontStyle: Type.fontStyle): ComponentBuilder {
     this.component.props.set("font-style", fontStyle);
     return this;
   }
@@ -216,16 +217,65 @@ export class ComponentBuilder {
     return this;
   }
 
-  setBackgroundColor(color: Color): ComponentBuilder {
+  setBackgroundColor(color: Type.Color): ComponentBuilder {
     let value = "";
     if (!color.a) value = `rgb(${color.r}, ${color.g}, ${color.b})`;
-    if (color.a) value = `rgba(${color.r}, ${color.g}, ${color.b}, ${color.a})`;
+    if (color.a || color.a === 0) value = `rgba(${color.r}, ${color.g}, ${color.b}, ${color.a})`;
     this.component.props.set("background-color", value);
     return this;
   }
 
-  setBorder(border: string): ComponentBuilder {
-    this.component.props.set("border", border);
+  setBorder(
+    borderStyle: Type.borderStyle,
+    borderWidth?: Type.borderWidth,
+    borderColor?: Type.Color
+  ): ComponentBuilder {
+    if (!borderWidth && !borderColor) this.component.props.set("border", borderStyle);
+
+    if (borderWidth && !borderColor)
+      this.component.props.set("border", `${borderStyle} ${borderWidth}`);
+
+    if (borderWidth && borderColor)
+      this.component.props.set(
+        "border",
+        `${borderStyle} ${borderWidth} ${colorToString(borderColor)}`
+      );
+
+    return this;
+  }
+
+  setBorderColor(borderColor: Type.Color): ComponentBuilder {
+    this.component.props.set("border-color", colorToString(borderColor));
+    return this;
+  }
+
+  setBorderStyle(borderStyle: Type.borderStyle): ComponentBuilder {
+    this.component.props.set("border-style", borderStyle);
+    return this;
+  }
+
+  setBorderWidth(borderWidth: Type.borderWidth): ComponentBuilder {
+    this.component.props.set("border-width", borderWidth);
+    return this;
+  }
+
+  setBorderBottomWidth(borderBottomWidth: Type.borderWidth): ComponentBuilder {
+    this.component.props.set("border-bottom-width", borderBottomWidth);
+    return this;
+  }
+
+  setBorderTopWidth(borderTopWidth: Type.borderWidth): ComponentBuilder {
+    this.component.props.set("border-top-width", borderTopWidth);
+    return this;
+  }
+
+  setBorderLeftWidth(borderLeftWidth: Type.borderWidth): ComponentBuilder {
+    this.component.props.set("border-left-width", borderLeftWidth);
+    return this;
+  }
+
+  setBorderRightWidth(borderRightWidth: Type.borderWidth): ComponentBuilder {
+    this.component.props.set("border-right-width", borderRightWidth);
     return this;
   }
 
@@ -312,7 +362,7 @@ export class ComponentBuilder {
     return this;
   }
 
-  setJustifyGridContent(justifyContent: alignment): ComponentBuilder {
+  setJustifyGridContent(justifyContent: Type.alignment): ComponentBuilder {
     this.component.props.set("justify-content", justifyContent);
     return this;
   }
@@ -354,8 +404,8 @@ export class ComponentBuilder {
     this.buildComponent(this.component);
   }
 
-  add(component: Component) {
-    this.component.children.push(component);
+  add(builder: ComponentBuilder) {
+    this.component.children.push(builder.getComponent());
   }
 
   getComponent(): Component {
