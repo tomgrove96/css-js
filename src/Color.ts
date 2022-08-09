@@ -142,28 +142,20 @@ export const WHITE_SMOKE = { r: 245, g: 245, b: 245 };
 export const YELLOW = { r: 255, g: 255, b: 0 };
 export const YELLOW_GREEN = { r: 154, g: 205, b: 250 };
 
-export class RGB implements Color {
-  r = 0;
-  g = 0;
-  b = 0;
-
-  constructor(r: number, g: number, b: number) {
-    this.r = r;
-    this.g = g;
-    this.b = b;
-  }
-}
-
 export class RGBA implements Color {
   r = 0;
   g = 0;
   b = 0;
   a = 1;
 
-  constructor(r: number, g: number, b: number, a: number) {
+  constructor(r: number, g: number, b: number, a?: number) {
     this.r = r;
     this.g = g;
     this.b = b;
-    this.a = a;
+    a ? this.a = a : this.a = 1;
+  }
+
+  setOpacity(opacity: number) {
+    this.a = opacity;
   }
 }
