@@ -217,10 +217,15 @@ export class ComponentBuilder {
     return this;
   }
 
-  setBackgroundColor(color: Type.Color): ComponentBuilder {
+  setBackgroundColor(color: Type.Color, opacity?: number): ComponentBuilder {
     let value = "";
-    if (!color.a) value = `rgb(${color.r}, ${color.g}, ${color.b})`;
-    if (color.a || color.a === 0) value = `rgba(${color.r}, ${color.g}, ${color.b}, ${color.a})`;
+    if(opacity) {
+        value = `rgba(${color.r}, ${color.g}, ${color.b}, ${opacity})`;
+        console.log("Opacity was given");
+    } else {
+        value = `rgba(${color.r}, ${color.g}, ${color.b}, ${color.a})`;
+        console.log("Opacity was NOT given");
+    }
     this.component.props.set("background-color", value);
     return this;
   }
