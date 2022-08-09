@@ -160,6 +160,10 @@ export class RGBA implements Color {
   b = 0;
   a = 1;
 
+  static fromRGB(rgb: RGB, alpha: number): RGBA {
+    return new this(rgb.r, rgb.g, rgb.b, alpha);
+  }
+
   constructor(r: number, g: number, b: number, a: number) {
     this.r = r;
     this.g = g;
