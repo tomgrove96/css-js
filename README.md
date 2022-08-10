@@ -1,1 +1,1 @@
-<h1>App Name</h1>
+<h1 style="text-align="center"">App Name</h1>
