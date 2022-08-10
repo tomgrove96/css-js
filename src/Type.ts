@@ -101,6 +101,17 @@ export type uom =
 export type unit = `${number}${uom}`;
 
 export type position =
+  | "TOP_LEFT"
+  | "TOP_CENTER"
+  | "TOP_RIGHT"
+  | "MIDDLE_LEFT"
+  | "MIDDLE_CENTER"
+  | "MIDDLE_RIGHT"
+  | "BOTTOM_LEFT"
+  | "BOTTOM_CENTER"
+  | "BOTTOM_RIGHT";
+
+export type placement =
   | "static"
   | "absolute"
   | "fixed"

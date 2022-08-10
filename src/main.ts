@@ -1,10 +1,12 @@
 import "./style.css";
-import { BasicContainer, TextBox } from "./UI";
+import { BasicContainer, TextBox, Button } from "./UI";
 
-const container = BasicContainer("container", "50vw", "50vh");
-const text = TextBox("sometext", "Text");
+const container = BasicContainer("container", "450px", "600px").setPosition("TOP_CENTER");
+const text = TextBox("text", "Text").setPosition("TOP_CENTER");
+const button = Button("button", "button", "96px", "48px").setPosition("TOP_RIGHT");
 
 container.add(text);
+container.add(button);
 
 container.build();
 

@@ -1,5 +1,5 @@
 import { Component } from "./Component";
-import { colorToString } from "../Util";
+import { colorToString, calcPosition } from "../Util";
 import * as Type from "../Type";
 
 export class ComponentBuilder {
@@ -11,6 +11,11 @@ export class ComponentBuilder {
 
   setValue(value: string): ComponentBuilder {
     this.component.props.set("value", value);
+    return this;
+  }
+
+  setPosition(position: Type.position): ComponentBuilder {
+    this.component.props.set("location", position);
     return this;
   }
 
@@ -47,8 +52,8 @@ export class ComponentBuilder {
     return this;
   }
 
-  setPosition(position: Type.position): ComponentBuilder {
-    this.component.props.set("position", position);
+  setPlacement(placement: Type.placement): ComponentBuilder {
+    this.component.props.set("position", placement);
     return this;
   }
 
@@ -387,14 +392,33 @@ export class ComponentBuilder {
       const component = q.shift();
       if (!component) return;
 
-      if (component === root) document.body.insertAdjacentHTML("beforeend", root.getHTML());
+      if (component === root) {
+        document.body.insertAdjacentHTML("beforeend", root.getHTML());
+
+        const element = document.getElementById(component.id);
+        if (element) {
+          const position = <Type.position>component.props.get("location");
+          const { x, y } = calcPosition(position, element);
+          element.style.left = x;
+          element.style.top = y;
+        }
+      }
 
       const children = component.children.length;
       for (let i = 0; i < children; i++) {
         const parent = document.getElementById(component.id);
         const child = component.children[i];
 
-        if (parent) parent.insertAdjacentHTML("beforeend", child.getHTML());
+        if (parent) {
+          parent.insertAdjacentHTML("beforeend", child.getHTML());
+          const element = document.getElementById(child.id);
+          if (element) {
+            const position = <Type.position>child.props.get("location");
+            const { x, y } = calcPosition(position, element, parent);
+            element.style.left = x;
+            element.style.top = y;
+          }
+        }
         q.push(child);
       }
     }

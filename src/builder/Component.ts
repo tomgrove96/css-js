@@ -13,7 +13,7 @@ export class Component {
     if (!this.hasProps()) return "";
     let props = "";
     for (const [key, value] of this.props) {
-      if (key === "value") continue;
+      if (key === "value" || key === "location") continue;
 
       props += `${key}: ${value};`;
     }
