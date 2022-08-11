@@ -159,3 +159,4 @@ export class RGBA implements Color {
     this.a = opacity;
   }
 }
+  
