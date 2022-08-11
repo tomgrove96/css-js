@@ -4,13 +4,13 @@ Create interfaces for video games. Specifically HTML/JS games. JS wrapper of CSS
 
 ## High Level Components
 
-- [ ] ==BasicContainer==
+- [ ] BasicContainer * ***IN PROGRESS*** *
 - [ ] GridContainer
 - [ ] GridBagContainer
 
 ## Default Components
 
-- [ ] ==Button==
+- [ ] Button * ***IN PROGRESS*** *
 - [ ] TextBox
 - [ ] Checkbox
 - [ ] Tabs
