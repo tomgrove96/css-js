@@ -126,6 +126,10 @@ export type overflow = "visible" | "hidden" | "clip" | "scroll" | "auto" | "init
 
 export type fontStyle = "normal" | "italic" | "oblique" | "initial" | "inherit";
 
+export type propType = string | string[] | Object[];
+
+export type userSelect = "auto" | "text" | "none" | "contain" | "all";
+
 export interface Color {
   r: number;
   g: number;
@@ -135,7 +139,5 @@ export interface Color {
 
 export interface eventDef {
   componentId: string;
-  cb: () => void;
+  cb: (e: Event) => void;
 }
-
-export type propType = string | string[] | Object[];

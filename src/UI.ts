@@ -13,6 +13,7 @@ export const BasicContainer = (id: string, width: Type.unit, height: Type.unit) 
     .setFontSize("16px")
     .setTextAlign("center")
     .setFontColor(Color.WHITE)
+    .setUserSelect("none")
     .setPlacement("relative");
 };
 
@@ -23,6 +24,7 @@ export const TextBox = (id: string, value: string) => {
     .setFontSize("16px")
     .setTextAlign("center")
     .setFontColor(Color.WHITE)
+    .setUserSelect("none")
     .setPlacement("absolute");
 };
 
@@ -37,5 +39,6 @@ export const Button = (id: string, label: string, width: Type.unit, height: Type
     .setFontSize("16px")
     .setTextAlign("center")
     .setFontColor(Color.WHITE)
+    .setUserSelect("none")
     .setPlacement("absolute");
 };

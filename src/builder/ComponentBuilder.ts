@@ -1,15 +1,15 @@
 import { Component } from "./Component";
 import { colorToString, calcPosition } from "../Util";
 import * as Type from "../Type";
-import UIEvent from "../UIEvents";
+import UIEventManager from "../UIEventManager";
 
 export class ComponentBuilder {
   private component: Component;
-  private uiEvents: UIEvent;
+  private eventManager: UIEventManager;
 
   constructor(id: string) {
     this.component = new Component(id);
-    this.uiEvents = new UIEvent();
+    this.eventManager = UIEventManager.getInstance();
   }
 
   setValue(value: string): ComponentBuilder {
@@ -385,6 +385,14 @@ export class ComponentBuilder {
     return this;
   }
 
+  setUserSelect(userSelect: Type.userSelect): ComponentBuilder {
+    this.component.props.set("-moz-user-select", userSelect);
+    this.component.props.set("-webkit-user-select", userSelect);
+    this.component.props.set("-ms-user-select", userSelect);
+    this.component.props.set("user-select", userSelect);
+    return this;
+  }
+
   private buildComponent(root: Component) {
     if (!root) return;
 
@@ -437,7 +445,7 @@ export class ComponentBuilder {
 
   addEventListener(event: string, cb: () => void) {
     const def: Type.eventDef = { componentId: this.component.id, cb };
-    this.uiEvents.addEvent(event, def);
+    this.eventManager.addEvent(event, def);
   }
 
   getComponent(): Component {
