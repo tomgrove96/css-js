@@ -132,3 +132,10 @@ export interface Color {
   b: number;
   a?: number;
 }
+
+export interface eventDef {
+  componentId: string;
+  cb: () => void;
+}
+
+export type propType = string | string[] | Object[];

@@ -1,6 +1,8 @@
+import * as Type from "../Type";
+
 export class Component {
   id: string;
-  props: Map<string, string | string[]>;
+  props: Map<string, Type.propType>;
   children: Component[];
 
   constructor(id: string) {
@@ -13,7 +15,7 @@ export class Component {
     if (!this.hasProps()) return "";
     let props = "";
     for (const [key, value] of this.props) {
-      if (key === "value" || key === "location") continue;
+      if (key === "value" || key === "location" || key === "events") continue;
 
       props += `${key}: ${value};`;
     }

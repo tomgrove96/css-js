@@ -1,12 +1,15 @@
 import { Component } from "./Component";
 import { colorToString, calcPosition } from "../Util";
 import * as Type from "../Type";
+import UIEvent from "../UIEvents";
 
 export class ComponentBuilder {
   private component: Component;
+  private uiEvents: UIEvent;
 
   constructor(id: string) {
     this.component = new Component(id);
+    this.uiEvents = new UIEvent();
   }
 
   setValue(value: string): ComponentBuilder {
@@ -430,6 +433,11 @@ export class ComponentBuilder {
 
   add(builder: ComponentBuilder) {
     this.component.children.push(builder.getComponent());
+  }
+
+  addEventListener(event: string, cb: () => void) {
+    const def: Type.eventDef = { componentId: this.component.id, cb };
+    this.uiEvents.addEvent(event, def);
   }
 
   getComponent(): Component {
