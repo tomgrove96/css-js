@@ -404,7 +404,7 @@ export class ComponentBuilder {
       if (!component) return;
 
       if (component === root) {
-        document.body.insertAdjacentHTML("beforeend", root.getHTML());
+        document.body.insertAdjacentHTML("beforeend", this.getHTML(root));
 
         const element = document.getElementById(component.id);
         if (element) {
@@ -421,7 +421,7 @@ export class ComponentBuilder {
         const child = component.children[i];
 
         if (parent) {
-          parent.insertAdjacentHTML("beforeend", child.getHTML());
+          parent.insertAdjacentHTML("beforeend", this.getHTML(child));
           const element = document.getElementById(child.id);
           if (element) {
             const position = <Type.position>child.props.get("location");
@@ -446,6 +446,36 @@ export class ComponentBuilder {
   addEventListener(event: string, cb: () => void) {
     const def: Type.eventDef = { componentId: this.component.id, cb };
     this.eventManager.addEvent(event, def);
+  }
+
+  private addProps(component: Component): string {
+    if (!this.hasProps(component)) return "";
+    let props = "";
+    for (const [key, value] of component.props) {
+      if (key === "value" || key === "location" || key === "events") continue;
+
+      props += `${key}: ${value};`;
+    }
+    return props;
+  }
+
+  private hasProps(component: Component): boolean {
+    if (component.props.has("value")) {
+      if (component.props.size > 1) return true;
+      return false;
+    }
+    if (component.props.size > 0) return true;
+    return false;
+  }
+
+  public getHTML(component: Component): string {
+    const html = `
+		<div
+			id="${component.id}"
+			style="${this.addProps(component)}">
+			${component.props.has("value") ? component.props.get("value") : ""}
+		</div>`;
+    return html;
   }
 
   getComponent(): Component {
