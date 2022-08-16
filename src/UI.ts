@@ -1,4 +1,4 @@
-import { ComponentBuilder } from "./builder/ComponentBuilder";
+import { ComponentBuilder } from "./builders/ComponentBuilder";
 import * as Type from "./Type";
 import * as Color from "./Color";
 

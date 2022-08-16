@@ -1,23 +1,20 @@
 import "./style.css";
-import { BasicContainer, TextBox, Button } from "./UI";
+import * as Color from "./Color";
+import Component from "./builders/Component";
+import BackgroundDef from "./builders/BackgroundDef";
+import BoxModelDef from "./builders/BoxModelDef";
+import BorderDef from "./builders/BorderDef";
+import FontDef from "./builders/FontDef";
+import TextDef from "./builders/TextDef";
 
-const container = BasicContainer("container", "450px", "600px").setPosition("TOP_CENTER");
-const text = TextBox("text", "Text").setPosition("TOP_CENTER");
-const button1 = Button("button1", "button", "96px", "48px").setPosition("TOP_RIGHT");
-const button2 = Button("button2", "button1", "96px", "48px");
+const background = new BackgroundDef({ color: Color.BLACK });
+const boxModel = new BoxModelDef({ display: "block", maxWidth: "6rem", padding: "1rem" });
+const border = new BorderDef({ style: "solid", width: "medium", color: Color.RED });
+const font = new FontDef({ family: "Arial", size: "2rem", color: Color.WHITE });
+const text = new TextDef({ value: "Text", align: "center" });
 
-button1.addEventListener("click", () => {
-  console.log("top right button");
-});
+const component = new Component("mainComponent", [background, boxModel, border, text, font]);
 
-button2.addEventListener("click", () => {
-  console.log("top left button");
-});
-
-container.add(text);
-container.add(button1);
-container.add(button2);
-
-container.build();
+component.pack();
 
 console.log(document.body.innerHTML);
