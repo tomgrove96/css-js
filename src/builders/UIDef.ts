@@ -53,11 +53,19 @@ type cursor =
 
 type resize = "none" | "both" | "horizontal" | "vertical" | "inherit";
 
+type uiDef = { appearance: appearance; cursor?: cursor; resize?: resize };
+
 export default class UIDef implements IBuilder {
   props: Map<string, Type.propType>;
 
-  constructor() {
+  constructor(ui: uiDef) {
     this.props = new Map();
+
+    if (ui) {
+      this.setAppearance(ui.appearance);
+      ui.cursor ? this.setCursor(ui.cursor) : false;
+      ui.resize ? this.setResize(ui.resize) : false;
+    }
   }
 
   setAppearance(appearance: appearance): UIDef {

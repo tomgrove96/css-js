@@ -13,7 +13,10 @@ const border = new BorderDef({ style: "solid", width: "medium", color: Color.RED
 const font = new FontDef({ family: "Arial", size: "2rem", color: Color.WHITE });
 const text = new TextDef({ value: "Text", align: "center" });
 
+const text1 = new Component("text", [new TextDef({ value: "text1" })]);
+
 const component = new Component("mainComponent", [background, boxModel, border, text, font]);
+component.add(text1);
 
 component.pack();
 

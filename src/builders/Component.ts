@@ -12,6 +12,12 @@ export default class Component {
     this.children = [];
   }
 
+  add(component: Component): Component {
+    if (this.children.includes(component)) return this;
+    this.children.push(component);
+    return this;
+  }
+
   pack() {
     const q: Component[] = [];
     q.push(this);
