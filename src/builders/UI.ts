@@ -55,7 +55,7 @@ type resize = "none" | "both" | "horizontal" | "vertical" | "inherit";
 
 type uiDef = { appearance: appearance; cursor?: cursor; resize?: resize };
 
-export default class UIDef implements IBuilder {
+export default class UI implements IBuilder {
   props: Map<string, Type.propType>;
 
   constructor(ui: uiDef) {
@@ -68,17 +68,17 @@ export default class UIDef implements IBuilder {
     }
   }
 
-  setAppearance(appearance: appearance): UIDef {
+  setAppearance(appearance: appearance): UI {
     this.props.set("appearance", appearance);
     return this;
   }
 
-  setCursor(cursor: cursor): UIDef {
+  setCursor(cursor: cursor): UI {
     this.props.set("cursor", cursor);
     return this;
   }
 
-  setResize(resize: resize): UIDef {
+  setResize(resize: resize): UI {
     this.props.set("resize", resize);
     return this;
   }

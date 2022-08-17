@@ -1,19 +1,19 @@
 import "./style.css";
 import * as Color from "./Color";
 import Component from "./builders/Component";
-import BackgroundDef from "./builders/BackgroundDef";
-import BoxModelDef from "./builders/BoxModelDef";
-import BorderDef from "./builders/BorderDef";
-import FontDef from "./builders/FontDef";
-import TextDef from "./builders/TextDef";
+import Background from "./builders/Background";
+import BoxModel from "./builders/BoxModel";
+import Border from "./builders/Border";
+import Font from "./builders/Font";
+import Text from "./builders/Text";
 
-const background = new BackgroundDef({ color: Color.BLACK });
-const boxModel = new BoxModelDef({ display: "block", maxWidth: "6rem", padding: "1rem" });
-const border = new BorderDef({ style: "solid", width: "medium", color: Color.RED });
-const font = new FontDef({ family: "Arial", size: "2rem", color: Color.WHITE });
-const text = new TextDef({ value: "Text", align: "center" });
+const background = new Background({ color: Color.BLACK });
+const boxModel = new BoxModel({ display: "block", maxWidth: "6rem", padding: "1rem" });
+const border = new Border({ style: "solid", width: "medium", color: Color.RED });
+const font = new Font({ family: "Arial", size: "2rem", color: Color.WHITE });
+const text = new Text({ value: "Text", align: "center" });
 
-const text1 = new Component("text", [new TextDef({ value: "text1" })]);
+const text1 = new Component("text", [new Text({ value: "text1" })]);
 
 const component = new Component("mainComponent", [background, boxModel, border, text, font]);
 component.add(text1);

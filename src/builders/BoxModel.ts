@@ -57,7 +57,7 @@ type boxModelDef = {
   visibility?: visibility;
 };
 
-export default class BoxModelDef implements IBuilder {
+export default class BoxModel implements IBuilder {
   private props: Map<string, Type.propType>;
 
   constructor(boxModel?: boxModelDef) {
@@ -77,102 +77,102 @@ export default class BoxModelDef implements IBuilder {
     }
   }
 
-  setWidth(width: Type.unit): BoxModelDef {
+  setWidth(width: Type.unit): BoxModel {
     this.props.set("width", width);
     return this;
   }
 
-  setHeight(height: Type.unit): BoxModelDef {
+  setHeight(height: Type.unit): BoxModel {
     this.props.set("height", height);
     return this;
   }
 
-  setMinWidth(width: Type.unit): BoxModelDef {
+  setMinWidth(width: Type.unit): BoxModel {
     this.props.set("min-width", width);
     return this;
   }
 
-  setMinHeight(height: Type.unit): BoxModelDef {
+  setMinHeight(height: Type.unit): BoxModel {
     this.props.set("min-height", height);
     return this;
   }
 
-  setMaxWidth(width: Type.unit): BoxModelDef {
+  setMaxWidth(width: Type.unit): BoxModel {
     this.props.set("max-width", width);
     return this;
   }
 
-  setMaxHeight(height: Type.unit): BoxModelDef {
+  setMaxHeight(height: Type.unit): BoxModel {
     this.props.set("max-height", height);
     return this;
   }
 
-  setMargin(margin: Type.unit): BoxModelDef {
+  setMargin(margin: Type.unit): BoxModel {
     this.props.set("margin", margin);
     return this;
   }
 
-  setMarginTop(margin: Type.unit): BoxModelDef {
+  setMarginTop(margin: Type.unit): BoxModel {
     this.props.set("margin-top", margin);
     return this;
   }
 
-  setMarginBottom(margin: Type.unit): BoxModelDef {
+  setMarginBottom(margin: Type.unit): BoxModel {
     this.props.set("margin-bottom", margin);
     return this;
   }
 
-  setMarginLeft(margin: Type.unit): BoxModelDef {
+  setMarginLeft(margin: Type.unit): BoxModel {
     this.props.set("margin-left", margin);
     return this;
   }
 
-  setMarginRight(margin: Type.unit): BoxModelDef {
+  setMarginRight(margin: Type.unit): BoxModel {
     this.props.set("margin-right", margin);
     return this;
   }
 
-  setPadding(padding: Type.unit): BoxModelDef {
+  setPadding(padding: Type.unit): BoxModel {
     this.props.set("padding", padding);
     return this;
   }
 
-  setPaddingTop(padding: Type.unit): BoxModelDef {
+  setPaddingTop(padding: Type.unit): BoxModel {
     this.props.set("padding-top", padding);
     return this;
   }
 
-  setPaddingBottom(padding: Type.unit): BoxModelDef {
+  setPaddingBottom(padding: Type.unit): BoxModel {
     this.props.set("padding-bottom", padding);
     return this;
   }
 
-  setPaddingLeft(padding: Type.unit): BoxModelDef {
+  setPaddingLeft(padding: Type.unit): BoxModel {
     this.props.set("padding-left", padding);
     return this;
   }
 
-  setPaddingRight(padding: Type.unit): BoxModelDef {
+  setPaddingRight(padding: Type.unit): BoxModel {
     this.props.set("padding-right", padding);
     return this;
   }
 
-  setDisplay(display: display): BoxModelDef {
+  setDisplay(display: display): BoxModel {
     this.props.set("display", display);
     return this;
   }
 
-  setOverflow(overflow: overflow): BoxModelDef {
+  setOverflow(overflow: overflow): BoxModel {
     this.props.set("overflow", overflow);
     return this;
   }
 
-  setOverflowStyle(overflow: overflowStyle): BoxModelDef {
+  setOverflowStyle(overflow: overflowStyle): BoxModel {
     this.props.set("overflow-style", overflow);
     return this;
   }
 
-  setVisibility(visibility: visibility): BoxModelDef {
+  setVisibility(visibility: visibility): BoxModel {
     this.props.set("visibility", visibility);
     return this;
   }

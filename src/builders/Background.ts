@@ -17,7 +17,7 @@ type backgroundDef = {
   clip?: backgroundClip;
 };
 
-export default class BackgroundDef implements IBuilder {
+export default class Background implements IBuilder {
   props: Map<string, Type.propType>;
 
   constructor(background?: backgroundDef) {
@@ -34,7 +34,7 @@ export default class BackgroundDef implements IBuilder {
     }
   }
 
-  setColor(color: Type.Color): BackgroundDef {
+  setColor(color: Type.Color): Background {
     let value = "";
     if (!color.a) value = `rgb(${color.r}, ${color.g}, ${color.b})`;
     if (color.a || color.a === 0) value = `rgba(${color.r}, ${color.g}, ${color.b}, ${color.a})`;
@@ -42,32 +42,32 @@ export default class BackgroundDef implements IBuilder {
     return this;
   }
 
-  setImage(image: string): BackgroundDef {
+  setImage(image: string): Background {
     this.props.set("background-image", image);
     return this;
   }
 
-  setSize(size: backgroundSize): BackgroundDef {
+  setSize(size: backgroundSize): Background {
     this.props.set("background-size", size);
     return this;
   }
 
-  setRepeat(repeat: backgroundRepeat): BackgroundDef {
+  setRepeat(repeat: backgroundRepeat): Background {
     this.props.set("background-repeat", repeat);
     return this;
   }
 
-  setAttachment(attachment: backgroundAttachment): BackgroundDef {
+  setAttachment(attachment: backgroundAttachment): Background {
     this.props.set("background-attachment", attachment);
     return this;
   }
 
-  setOrigin(origin: backgroundOrigin): BackgroundDef {
+  setOrigin(origin: backgroundOrigin): Background {
     this.props.set("background-origin", origin);
     return this;
   }
 
-  setClip(clip: backgroundClip): BackgroundDef {
+  setClip(clip: backgroundClip): Background {
     this.props.set("background-clip", clip);
     return this;
   }

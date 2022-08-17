@@ -43,7 +43,7 @@ type fontDef = {
   style?: fontStyle;
 };
 
-export default class FontDef implements IBuilder {
+export default class Font implements IBuilder {
   private props: Map<string, Type.propType>;
 
   constructor(font?: fontDef) {
@@ -52,35 +52,36 @@ export default class FontDef implements IBuilder {
     if (font) this.setFont(font);
   }
 
-  setFont(font: fontDef) {
+  setFont(font: fontDef): Font {
     this.setFamily(font.family);
     font.size ? this.setSize(font.size) : false;
     font.weight ? this.setWeight(font.weight) : false;
     font.color ? this.setColor(font.color) : false;
     font.style ? this.setStyle(font.style) : false;
+    return this;
   }
 
-  setFamily(font: fontFamily): FontDef {
+  setFamily(font: fontFamily): Font {
     this.props.set("font-family", font);
     return this;
   }
 
-  setSize(size: fontSize): FontDef {
+  setSize(size: fontSize): Font {
     this.props.set("font-size", size);
     return this;
   }
 
-  setWeight(weight: fontWeight): FontDef {
+  setWeight(weight: fontWeight): Font {
     this.props.set("font-weight", weight);
     return this;
   }
 
-  setStyle(style: fontStyle): FontDef {
+  setStyle(style: fontStyle): Font {
     this.props.set("font-style", style);
     return this;
   }
 
-  setColor(color: Type.Color): FontDef {
+  setColor(color: Type.Color): Font {
     this.props.set("color", colorToString(color));
     return this;
   }
