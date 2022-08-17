@@ -54,15 +54,6 @@ export type alignSelf =
   | "initial"
   | "inherit";
 
-export type backgroundColor = "";
-export type backgroundImage = "";
-export type backgroundPosition = "";
-export type backgroundSize = "";
-export type backgroundRepeat = "";
-export type backgroundOrigin = "";
-export type backgroundClip = "";
-export type backgroundAttachment = "";
-
 export type px = `${number}px`;
 export type pt = `${number}pt`;
 export type cm = `${number}cm`;
@@ -126,9 +117,18 @@ export type overflow = "visible" | "hidden" | "clip" | "scroll" | "auto" | "init
 
 export type fontStyle = "normal" | "italic" | "oblique" | "initial" | "inherit";
 
+export type propType = string | string[] | number | Object[];
+
+export type userSelect = "auto" | "text" | "none" | "contain" | "all";
+
 export interface Color {
   r: number;
   g: number;
   b: number;
   a?: number;
+}
+
+export interface eventDef {
+  componentId: string;
+  cb: (e: Event) => void;
 }

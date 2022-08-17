@@ -26,8 +26,8 @@ export const calcPosition = (
   }
   if (position === "TOP_RIGHT") {
     parent
-      ? (tempX = parent.getBoundingClientRect().width - component.getBoundingClientRect().width)
-      : (tempX = window.innerWidth - component.getBoundingClientRect().width);
+      ? (tempX = parent.offsetWidth - component.offsetWidth)
+      : (tempX = window.innerWidth - component.offsetWidth);
     tempY = 0;
   }
   const x = `${tempX}px`;

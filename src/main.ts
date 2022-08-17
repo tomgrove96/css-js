@@ -1,17 +1,23 @@
 import "./style.css";
-import { BasicContainer, Text } from "./UI";
-import * as Color from "./Color"
+import * as Color from "./Color";
+import Component from "./builders/Component";
+import Background from "./builders/Background";
+import BoxModel from "./builders/BoxModel";
+import Border from "./builders/Border";
+import Font from "./builders/Font";
+import Text from "./builders/Text";
 
-const container = BasicContainer("container", "450px", "600px").setPosition("TOP_CENTER");
-const text = Text("text", "Text").setPosition("TOP_CENTER");
-// const button = Button("button", "button", "96px", "48px").setPosition("TOP_RIGHT");
-const container2 = BasicContainer("container", "450px", "600px").setPosition("TOP_CENTER");
+const background = new Background({ color: Color.BLACK });
+const boxModel = new BoxModel({ display: "block", maxWidth: "6rem", padding: "1rem" });
+const border = new Border({ style: "solid", width: "medium", color: Color.RED });
+const font = new Font({ family: "Arial", size: "2rem", color: Color.WHITE });
+const text = new Text({ value: "Text", align: "center" });
 
-text.setBackgroundColor(Color.ALICE_BLUE);
-container.add(text);
-//container.add(button);
+const text1 = new Component("text", [new Text({ value: "text1" })]);
 
-container.build();
-container2.build();
+const component = new Component("mainComponent", [background, boxModel, border, text, font]);
+component.add(text1);
+
+component.pack();
 
 console.log(document.body.innerHTML);
