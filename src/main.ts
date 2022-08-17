@@ -1,11 +1,6 @@
 import "./style.css";
 import * as Color from "./Color";
-import Component from "./builders/Component";
-import Background from "./builders/Background";
-import BoxModel from "./builders/BoxModel";
-import Border from "./builders/Border";
-import Font from "./builders/Font";
-import Text from "./builders/Text";
+import { Component, Background, BoxModel, Border, Font, Text } from "./builders/UI";
 
 const background = new Background({ color: Color.BLACK });
 const boxModel = new BoxModel({ display: "block", maxWidth: "6rem", padding: "1rem" });
