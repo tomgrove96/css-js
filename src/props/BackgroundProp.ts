@@ -1,24 +1,18 @@
 import * as Type from "../Type";
-import IBuilder from "./IBuilder";
-
-type backgroundSize = "auto" | "cover" | "contain" | Type.unit;
-type backgroundRepeat = "repeat" | "repeat-x" | "repeat-y" | "no-repeat";
-type backgroundAttachment = "scroll" | "fixed" | "local";
-type backgroundOrigin = "border-box" | "padding-box" | "content-box";
-type backgroundClip = "border-box" | "padding-box" | "content-box" | "no-clip";
+import IProp from "./IProp";
 
 type backgroundDef = {
   color: Type.Color;
   image?: string;
-  size?: backgroundSize;
-  repeat?: backgroundRepeat;
-  attachment?: backgroundAttachment;
-  origin?: backgroundOrigin;
-  clip?: backgroundClip;
+  size?: Type.backgroundSize;
+  repeat?: Type.backgroundRepeat;
+  attachment?: Type.backgroundAttachment;
+  origin?: Type.backgroundOrigin;
+  clip?: Type.backgroundClip;
 };
 
-export default class Background implements IBuilder {
-  props: Map<string, Type.propType>;
+export default class BackgroundProp implements IProp {
+  private props: Type.propType;
 
   constructor(background?: backgroundDef) {
     this.props = new Map();
@@ -34,7 +28,7 @@ export default class Background implements IBuilder {
     }
   }
 
-  setColor(color: Type.Color): Background {
+  setColor(color: Type.Color): BackgroundProp {
     let value = "";
     if (!color.a) value = `rgb(${color.r}, ${color.g}, ${color.b})`;
     if (color.a || color.a === 0) value = `rgba(${color.r}, ${color.g}, ${color.b}, ${color.a})`;
@@ -42,37 +36,37 @@ export default class Background implements IBuilder {
     return this;
   }
 
-  setImage(image: string): Background {
+  setImage(image: string): BackgroundProp {
     this.props.set("background-image", image);
     return this;
   }
 
-  setSize(size: backgroundSize): Background {
+  setSize(size: Type.backgroundSize): BackgroundProp {
     this.props.set("background-size", size);
     return this;
   }
 
-  setRepeat(repeat: backgroundRepeat): Background {
+  setRepeat(repeat: Type.backgroundRepeat): BackgroundProp {
     this.props.set("background-repeat", repeat);
     return this;
   }
 
-  setAttachment(attachment: backgroundAttachment): Background {
+  setAttachment(attachment: Type.backgroundAttachment): BackgroundProp {
     this.props.set("background-attachment", attachment);
     return this;
   }
 
-  setOrigin(origin: backgroundOrigin): Background {
+  setOrigin(origin: Type.backgroundOrigin): BackgroundProp {
     this.props.set("background-origin", origin);
     return this;
   }
 
-  setClip(clip: backgroundClip): Background {
+  setClip(clip: Type.backgroundClip): BackgroundProp {
     this.props.set("background-clip", clip);
     return this;
   }
 
-  build(): Map<string, Type.propType> {
+  getProps(): Type.propType {
     return this.props;
   }
 }

@@ -1,63 +1,150 @@
+// ui
+export type appearance =
+  | "normal"
+  | "inherit"
+  | "icon"
+  | "window"
+  | "desktop"
+  | "work-space"
+  | "document"
+  | "tooltip"
+  | "dialog"
+  | "button"
+  | "push-button"
+  | "hyperlink"
+  | "radio-button"
+  | "checkbox"
+  | "menu-item"
+  | "tab"
+  | "menu"
+  | "menubar"
+  | "pull-down-menu"
+  | "pop-up-menu"
+  | "list-menu"
+  | "radio-group"
+  | "checkbox-group"
+  | "outline-tree"
+  | "range"
+  | "field"
+  | "combo-box"
+  | "signature"
+  | "password";
+
+export type cursor =
+  | "auto"
+  | "crosshair"
+  | "default"
+  | "pointer"
+  | "move"
+  | "e-resize"
+  | "neresize"
+  | "nw-resize"
+  | "n-resize"
+  | "se-resize"
+  | "sw-resize"
+  | "swresize"
+  | "s-resize"
+  | "w-resize"
+  | "text"
+  | "wait"
+  | "help";
+
+export type resize = "none" | "both" | "horizontal" | "vertical" | "inherit";
+
+// text
+export type textDirection = "ltr" | "rtl" | "inherit";
+export type whitespace = "normal" | "pre" | "nowrap" | "pre-wrap" | "pre-line";
+export type textAlign = "start" | "end" | "left" | "right" | "center" | "justify";
+export type textDecoration = "none" | "underline" | "overline" | "line-thorugh" | "blink";
+export type wordBreak = "normal" | "keep-all" | "loose" | "break-strict" | "break-all";
+export type wordWrap = "normal" | "nowrap";
+
+// font
+export type fontFamily = "serif" | "sans-serif" | string;
+
+export type fontWeight =
+  | "normal"
+  | "bold"
+  | "bolder"
+  | "lighter"
+  | "inherit"
+  | 100
+  | 200
+  | 300
+  | 400
+  | 500
+  | 600
+  | 700
+  | 800
+  | 900;
+
+export type fontSize =
+  | "xx-small"
+  | "x-small"
+  | "small"
+  | "medium"
+  | "large"
+  | "x-large"
+  | "xxlarge"
+  | "smaller"
+  | "larger"
+  | "inherit"
+  | unit;
+
+export type fontStyle = "normal" | "italic" | "oblique" | "inherit";
+
+// boxmodel
 export type display =
+  | "none"
   | "inline"
   | "block"
-  | "contents"
-  | "flex"
-  | "grid"
   | "inline-block"
+  | "flex"
   | "inline-flex"
+  | "grid"
   | "inline-grid"
-  | "inline-table"
+  | "contents"
   | "list-item"
   | "run-in"
+  | "compact"
   | "table"
-  | "table-caption"
-  | "table-column-group"
+  | "inline-table"
+  | "table-row-group"
   | "table-header-group"
   | "table-footer-group"
-  | "table-row-group"
-  | "table-cell"
-  | "table-column"
   | "table-row"
-  | "none"
-  | "initial"
-  | "inherit";
+  | "table-column-group"
+  | "table-column"
+  | "table-cell"
+  | "table-caption"
+  | "ruby"
+  | "ruby-base"
+  | "ruby-text"
+  | "ruby-base-group"
+  | "ruby-text-group";
 
-export type alignment = "start" | "end" | "center" | "left" | "right" | "normal";
-
-export type alignContent =
-  | "stretch"
-  | "center"
-  | "flex-start"
-  | "flex-end"
-  | "space-between"
-  | "space-around"
-  | "initial"
-  | "inherit";
-
-export type alignItems =
-  | "stretch"
-  | "center"
-  | "flex-start"
-  | "flex-end"
-  | "baseline"
-  | "initial"
-  | "inherit";
-
-export type alignSelf =
+export type overflow =
+  | "visible"
+  | "hidden"
+  | "scroll"
   | "auto"
-  | "stretch"
-  | "center"
-  | "flex-start"
-  | "flex-end"
-  | "baseline"
-  | "initial"
-  | "inherit";
+  | "no-display"
+  | "no-content"
+  | "overflow-x"
+  | "overflow-y";
 
-export type px = `${number}px`;
-export type pt = `${number}pt`;
-export type cm = `${number}cm`;
+export type overflowStyle = "auto" | "marquee-line" | "marqueeblock";
 
+export type visibility = "visible" | "hidden" | "collapse";
+
+// background
+export type backgroundSize = "auto" | "cover" | "contain" | unit;
+export type backgroundRepeat = "repeat" | "repeat-x" | "repeat-y" | "no-repeat";
+export type backgroundAttachment = "scroll" | "fixed" | "local";
+export type backgroundOrigin = "border-box" | "padding-box" | "content-box";
+export type backgroundClip = "border-box" | "padding-box" | "content-box" | "no-clip";
+
+// border
 export type borderWidth = "thin" | "medium" | "thick" | px | pt | cm;
 
 export type borderStyle =
@@ -71,6 +158,12 @@ export type borderStyle =
   | "outset"
   | "none"
   | "hidden";
+
+// ----------------
+
+export type px = `${number}px`;
+export type pt = `${number}pt`;
+export type cm = `${number}cm`;
 
 export type uom =
   | "cm"
@@ -91,35 +184,7 @@ export type uom =
 
 export type unit = `${number}${uom}`;
 
-export type position =
-  | "TOP_LEFT"
-  | "TOP_CENTER"
-  | "TOP_RIGHT"
-  | "MIDDLE_LEFT"
-  | "MIDDLE_CENTER"
-  | "MIDDLE_RIGHT"
-  | "BOTTOM_LEFT"
-  | "BOTTOM_CENTER"
-  | "BOTTOM_RIGHT";
-
-export type placement =
-  | "static"
-  | "absolute"
-  | "fixed"
-  | "relative"
-  | "sticky"
-  | "initial"
-  | "inherit";
-
-export type zIndex = "auto" | number | "initial" | "inherit";
-
-export type overflow = "visible" | "hidden" | "clip" | "scroll" | "auto" | "initial" | "inherit";
-
-export type fontStyle = "normal" | "italic" | "oblique" | "initial" | "inherit";
-
-export type propType = string | string[] | number | Object[];
-
-export type userSelect = "auto" | "text" | "none" | "contain" | "all";
+export type propType = Map<string, string | string[] | number | Object[]>;
 
 export interface Color {
   r: number;
