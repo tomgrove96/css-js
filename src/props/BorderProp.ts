@@ -1,5 +1,5 @@
 import * as Type from "../Type";
-import IBuilder from "./IBuilder";
+import IProp from "./IProp";
 import { colorToString } from "../Util";
 
 type borderDef = {
@@ -8,8 +8,8 @@ type borderDef = {
   color?: Type.Color;
 };
 
-export default class BorderDef implements IBuilder {
-  private props: Map<string, Type.propType>;
+export default class BorderProp implements IProp {
+  private props: Type.propType;
 
   constructor(border?: borderDef) {
     this.props = new Map();
@@ -17,7 +17,7 @@ export default class BorderDef implements IBuilder {
     if (border) this.setBorder(border);
   }
 
-  setBorder(border: borderDef): BorderDef {
+  setBorder(border: borderDef): BorderProp {
     let borderStr = `${border.style}`;
     border.width ? (borderStr += ` ${border.width}`) : false;
     border.color ? (borderStr += ` ${colorToString(border.color)}`) : false;
@@ -26,7 +26,7 @@ export default class BorderDef implements IBuilder {
     return this;
   }
 
-  setBorderLeft(border: borderDef): BorderDef {
+  setBorderLeft(border: borderDef): BorderProp {
     let borderStr = `${border.style}`;
     border.width ? (borderStr += ` ${border.width}`) : false;
     border.color ? (borderStr += ` ${colorToString(border.color)}`) : false;
@@ -34,7 +34,7 @@ export default class BorderDef implements IBuilder {
     return this;
   }
 
-  setBorderRight(border: borderDef): BorderDef {
+  setBorderRight(border: borderDef): BorderProp {
     let borderStr = `${border.style}`;
     border.width ? (borderStr += ` ${border.width}`) : false;
     border.color ? (borderStr += ` ${colorToString(border.color)}`) : false;
@@ -42,7 +42,7 @@ export default class BorderDef implements IBuilder {
     return this;
   }
 
-  setBorderTop(border: borderDef): BorderDef {
+  setBorderTop(border: borderDef): BorderProp {
     let borderStr = `${border.style}`;
     border.width ? (borderStr += ` ${border.width}`) : false;
     border.color ? (borderStr += ` ${colorToString(border.color)}`) : false;
@@ -50,7 +50,7 @@ export default class BorderDef implements IBuilder {
     return this;
   }
 
-  setBorderBottom(border: borderDef): BorderDef {
+  setBorderBottom(border: borderDef): BorderProp {
     let borderStr = `${border.style}`;
     border.width ? (borderStr += ` ${border.width}`) : false;
     border.color ? (borderStr += ` ${colorToString(border.color)}`) : false;
@@ -58,7 +58,7 @@ export default class BorderDef implements IBuilder {
     return this;
   }
 
-  build(): Map<string, Type.propType> {
+  getProps(): Type.propType {
     return this.props;
   }
 }

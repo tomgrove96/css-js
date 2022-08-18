@@ -1,14 +1,14 @@
-import IBuilder from "./IBuilder";
+import IProp from "../props/IProp";
 import * as Type from "../Type";
 
 export default class Component {
   id: string;
-  builders: IBuilder[];
+  props: IProp[];
   children: Component[];
 
-  constructor(id: string, def: IBuilder[]) {
+  constructor(id: string, props: IProp[]) {
     this.id = id;
-    this.builders = def;
+    this.props = props;
     this.children = [];
   }
 
@@ -44,18 +44,18 @@ export default class Component {
     }
   }
 
-  private mergeBuilderProps(builders: IBuilder[]): Map<string, Type.propType> {
-    let props = new Map();
-    builders.forEach((builder) => {
-      props = new Map([...props, ...builder.build()]);
+  private mergeProps(props: IProp[]): Map<string, Type.propType> {
+    let tempProps = new Map();
+    props.forEach((prop) => {
+      tempProps = new Map([...tempProps, ...prop.getProps()]);
     });
-    return props;
+    return tempProps;
   }
 
-  private getProps(builders: IBuilder[]): string {
-    const props = this.mergeBuilderProps(builders);
+  private getProps(props: IProp[]): string {
+    const tempProps = this.mergeProps(props);
     let propStr = "";
-    for (const [key, value] of props) {
+    for (const [key, value] of tempProps) {
       if (key === "value" || key === "location" || key === "events") continue;
 
       propStr += `${key}: ${value};`;
@@ -64,11 +64,11 @@ export default class Component {
   }
 
   private getHTMLComponent(): string {
-    const props = this.mergeBuilderProps(this.builders);
+    const props = this.mergeProps(this.props);
     const html = `
 		<div
 			id="${this.id}"
-			style="${this.getProps(this.builders)}">
+			style="${this.getProps(this.props)}">
 			${props.has("value") ? props.get("value") : ""}
 		</div>`;
     return html;
