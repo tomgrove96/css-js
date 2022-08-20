@@ -1,6 +1,6 @@
 import * as Type from "../Type";
 import IProp from "./IProp";
-import { colorToString } from "../Util";
+import { colorToString } from "../Color";
 
 type borderDef = {
   style: Type.borderStyle;

@@ -1,6 +1,6 @@
 import IBuilder from "./IProp";
 import * as Type from "../Type";
-import { colorToString } from "../Util";
+import { colorToString } from "../Color";
 
 type fontDef = {
   family: Type.fontFamily;

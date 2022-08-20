@@ -21,30 +21,28 @@ export default class Component {
   pack() {
     const q: Component[] = [];
     q.push(this);
+    let result = this.getComponentHTML(this.mergeProps(this.props));
 
     while (q.length > 0) {
       const next = q.shift();
 
       if (!next) continue;
 
-      if (next === this) {
-        document.body.insertAdjacentHTML("beforeend", next.getHTMLComponent());
-      }
-
       const children = next.children.length;
       for (let i = 0; i < children; i++) {
-        const parent = document.getElementById(next.id);
         const child = next.children[i];
 
-        if (parent) {
-          parent.insertAdjacentHTML("beforeend", child.getHTMLComponent());
-        }
+        result = this.addChildHTML(
+          next.getComponentHTML(this.mergeProps(next.props)),
+          child.getComponentHTML(this.mergeProps(child.props))
+        );
         q.push(child);
       }
     }
+    document.body.insertAdjacentHTML("beforeend", result);
   }
 
-  private mergeProps(props: IProp[]): Map<string, Type.propType> {
+  private mergeProps(props: IProp[]): Type.propType {
     let tempProps = new Map();
     props.forEach((prop) => {
       tempProps = new Map([...tempProps, ...prop.getProps()]);
@@ -52,23 +50,28 @@ export default class Component {
     return tempProps;
   }
 
-  private getProps(props: IProp[]): string {
-    const tempProps = this.mergeProps(props);
+  private propsToString(props: Type.propType): string {
     let propStr = "";
-    for (const [key, value] of tempProps) {
-      if (key === "value" || key === "location" || key === "events") continue;
+    for (const [key, value] of props) {
+      if (key === "value") continue;
 
       propStr += `${key}: ${value};`;
     }
     return propStr;
   }
 
-  private getHTMLComponent(): string {
-    const props = this.mergeProps(this.props);
+  private addChildHTML(parent: string, child: string): string {
+    let index = parent.lastIndexOf("</div>");
+    const p1 = parent.slice(0, index);
+    const p2 = parent.slice(index);
+    return p1.concat(child, p2);
+  }
+
+  private getComponentHTML(props: Type.propType): string {
     const html = `
 		<div
 			id="${this.id}"
-			style="${this.getProps(this.props)}">
+			style="${this.propsToString(props)}">
 			${props.has("value") ? props.get("value") : ""}
 		</div>`;
     return html;
