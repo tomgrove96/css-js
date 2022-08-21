@@ -5,16 +5,19 @@ import IColor from "../interfaces/IColor";
 import { colorToString } from "../Color";
 
 export default class FontProp implements IProp {
-  private props: Type.propType;
+  private props: Type.propType = new Map();
 
   constructor(font?: IFont) {
-    this.props = new Map();
+    this.build(font);
+  }
 
-    if (font) this.setFont(font);
+  private build(font?: IFont) {
+    if (!font) return;
+    this.setFont(font);
   }
 
   setFont(font: IFont): FontProp {
-    this.setFamily(font.family);
+    font.family ? this.setFamily(font.family) : false;
     font.size ? this.setSize(font.size) : false;
     font.weight ? this.setWeight(font.weight) : false;
     font.color ? this.setColor(font.color) : false;

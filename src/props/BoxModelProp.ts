@@ -3,23 +3,28 @@ import IProp from "../interfaces/IProp";
 import IBoxModel from "../interfaces/IBoxModel";
 
 export default class BoxModelProp implements IProp {
-  private props: Type.propType;
+  private props: Type.propType = new Map();
 
   constructor(boxModel?: IBoxModel) {
-    this.props = new Map();
+    this.build(boxModel);
+  }
 
-    if (boxModel) {
-      this.setDisplay(boxModel.display);
-      boxModel.width ? this.setWidth(boxModel.width) : false;
-      boxModel.minWidth ? this.setMinWidth(boxModel.minWidth) : false;
-      boxModel.maxWidth ? this.setMaxWidth(boxModel.maxWidth) : false;
-      boxModel.height ? this.setHeight(boxModel.height) : false;
-      boxModel.minHeight ? this.setMinHeight(boxModel.minHeight) : false;
-      boxModel.maxHeight ? this.setMaxHeight(boxModel.maxHeight) : false;
-      boxModel.padding ? this.setPadding(boxModel.padding) : false;
-      boxModel.margin ? this.setMargin(boxModel.margin) : false;
-      boxModel.visibility ? this.setVisibility(boxModel.visibility) : false;
-    }
+  private build(boxModel?: IBoxModel) {
+    if (!boxModel) return;
+    this.setBoxModel(boxModel);
+  }
+
+  setBoxModel(boxModel: IBoxModel) {
+    boxModel.display ? this.setDisplay(boxModel.display) : false;
+    boxModel.width ? this.setWidth(boxModel.width) : false;
+    boxModel.minWidth ? this.setMinWidth(boxModel.minWidth) : false;
+    boxModel.maxWidth ? this.setMaxWidth(boxModel.maxWidth) : false;
+    boxModel.height ? this.setHeight(boxModel.height) : false;
+    boxModel.minHeight ? this.setMinHeight(boxModel.minHeight) : false;
+    boxModel.maxHeight ? this.setMaxHeight(boxModel.maxHeight) : false;
+    boxModel.padding ? this.setPadding(boxModel.padding) : false;
+    boxModel.margin ? this.setMargin(boxModel.margin) : false;
+    boxModel.visibility ? this.setVisibility(boxModel.visibility) : false;
   }
 
   setWidth(width: Type.unit): BoxModelProp {

@@ -1,7 +1,7 @@
 import * as Type from "../Type";
 
 export default interface IBoxModel {
-  display: Type.display;
+  display?: Type.display;
   width?: Type.unit;
   minWidth?: Type.unit;
   maxWidth?: Type.unit;

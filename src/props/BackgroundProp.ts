@@ -4,20 +4,26 @@ import IBackground from "../interfaces/IBackground";
 import IColor from "../interfaces/IColor";
 
 export default class BackgroundProp implements IProp {
-  private props: Type.propType;
+  private props: Type.propType = new Map();
 
   constructor(background?: IBackground) {
-    this.props = new Map();
+    this.build(background);
+  }
 
-    if (background) {
-      this.setColor(background.color);
-      background.image ? this.setImage(background.image) : false;
-      background.size ? this.setSize(background.size) : false;
-      background.repeat ? this.setRepeat(background.repeat) : false;
-      background.attachment ? this.setAttachment(background.attachment) : false;
-      background.origin ? this.setOrigin(background.origin) : false;
-      background.clip ? this.setClip(background.clip) : false;
-    }
+  private build(background?: IBackground) {
+    if (!background) return;
+    this.setBackground(background);
+  }
+
+  setBackground(background: IBackground): BackgroundProp {
+    background.color ? this.setColor(background.color) : false;
+    background.image ? this.setImage(background.image) : false;
+    background.size ? this.setSize(background.size) : false;
+    background.repeat ? this.setRepeat(background.repeat) : false;
+    background.attachment ? this.setAttachment(background.attachment) : false;
+    background.origin ? this.setOrigin(background.origin) : false;
+    background.clip ? this.setClip(background.clip) : false;
+    return this;
   }
 
   setColor(color: IColor): BackgroundProp {

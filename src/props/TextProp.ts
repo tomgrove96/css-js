@@ -3,16 +3,19 @@ import IProp from "../interfaces/IProp";
 import IText from "../interfaces/IText";
 
 export default class TextProp implements IProp {
-  private props: Type.propType;
+  private props: Type.propType = new Map();
 
   constructor(text?: IText) {
-    this.props = new Map();
+    this.build(text);
+  }
 
-    if (text) this.setText(text);
+  private build(text?: IText) {
+    if (!text) return;
+    this.setText(text);
   }
 
   setText(text: IText): TextProp {
-    this.setValue(text.value);
+    text.value ? this.setValue(text.value) : this.setValue("");
     text.align ? this.setAlign(text.align) : false;
     text.decoration ? this.setDecoration(text.decoration) : false;
     text.direction ? this.setDirection(text.direction) : false;
