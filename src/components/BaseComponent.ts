@@ -1,5 +1,5 @@
-import IProp from "../props/IProp";
 import * as Type from "../Type";
+import IProp from "../props/IProp";
 
 export default class BaseComponent {
   id: string;

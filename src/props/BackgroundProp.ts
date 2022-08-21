@@ -1,20 +1,12 @@
 import * as Type from "../Type";
 import IProp from "./IProp";
-
-type backgroundDef = {
-  color: Type.IColor;
-  image?: string;
-  size?: Type.backgroundSize;
-  repeat?: Type.backgroundRepeat;
-  attachment?: Type.backgroundAttachment;
-  origin?: Type.backgroundOrigin;
-  clip?: Type.backgroundClip;
-};
+import IBackground from "../interfaces/IBackground";
+import IColor from "../interfaces/IColor";
 
 export default class BackgroundProp implements IProp {
   private props: Type.propType;
 
-  constructor(background?: backgroundDef) {
+  constructor(background?: IBackground) {
     this.props = new Map();
 
     if (background) {
@@ -28,7 +20,7 @@ export default class BackgroundProp implements IProp {
     }
   }
 
-  setColor(color: Type.IColor): BackgroundProp {
+  setColor(color: IColor): BackgroundProp {
     let value = "";
     if (!color.a) value = `rgb(${color.r}, ${color.g}, ${color.b})`;
     if (color.a || color.a === 0) value = `rgba(${color.r}, ${color.g}, ${color.b}, ${color.a})`;
