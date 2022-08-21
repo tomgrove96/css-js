@@ -1,6 +1,6 @@
+import * as Type from "../Type";
 import BackgroundProp from "../props/BackgroundProp";
 import BoxModelProp from "../props/BoxModelProp";
-import * as Type from "../Type";
 import BaseComponent from "./BaseComponent";
 
 export default class BasicContainer extends BaseComponent {

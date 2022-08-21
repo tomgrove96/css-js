@@ -186,13 +186,6 @@ export type unit = `${number}${uom}`;
 
 export type propType = Map<string, string | string[] | number | Object[]>;
 
-export interface IColor {
-  r: number;
-  g: number;
-  b: number;
-  a?: number;
-}
-
 export interface eventDef {
   componentId: string;
   cb: (e: Event) => void;

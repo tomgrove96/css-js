@@ -1,4 +1,4 @@
-import { IColor } from "./Type";
+import IColor from "./interfaces/IColor";
 
 export const ALICE_BLUE = { r: 240, g: 248, b: 255 };
 export const ANTIQUE_WHITE = { r: 250, g: 235, b: 215 };

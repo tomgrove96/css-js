@@ -1,23 +1,11 @@
-import IProp from "./IProp";
 import * as Type from "../Type";
-
-type boxModelDef = {
-  display: Type.display;
-  width?: Type.unit;
-  minWidth?: Type.unit;
-  maxWidth?: Type.unit;
-  height?: Type.unit;
-  minHeight?: Type.unit;
-  maxHeight?: Type.unit;
-  padding?: Type.unit;
-  margin?: Type.unit;
-  visibility?: Type.visibility;
-};
+import IProp from "./IProp";
+import IBoxModel from "../interfaces/IBoxModel";
 
 export default class BoxModelProp implements IProp {
   private props: Type.propType;
 
-  constructor(boxModel?: boxModelDef) {
+  constructor(boxModel?: IBoxModel) {
     this.props = new Map();
 
     if (boxModel) {

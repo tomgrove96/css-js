@@ -1,23 +1,18 @@
 import * as Type from "../Type";
 import IProp from "./IProp";
+import IBorder from "../interfaces/IBorder";
 import { colorToString } from "../Color";
-
-type borderDef = {
-  style: Type.borderStyle;
-  width?: Type.borderWidth;
-  color?: Type.IColor;
-};
 
 export default class BorderProp implements IProp {
   private props: Type.propType;
 
-  constructor(border?: borderDef) {
+  constructor(border?: IBorder) {
     this.props = new Map();
 
     if (border) this.setBorder(border);
   }
 
-  setBorder(border: borderDef): BorderProp {
+  setBorder(border: IBorder): BorderProp {
     let borderStr = `${border.style}`;
     border.width ? (borderStr += ` ${border.width}`) : false;
     border.color ? (borderStr += ` ${colorToString(border.color)}`) : false;
@@ -26,7 +21,7 @@ export default class BorderProp implements IProp {
     return this;
   }
 
-  setBorderLeft(border: borderDef): BorderProp {
+  setBorderLeft(border: IBorder): BorderProp {
     let borderStr = `${border.style}`;
     border.width ? (borderStr += ` ${border.width}`) : false;
     border.color ? (borderStr += ` ${colorToString(border.color)}`) : false;
@@ -34,7 +29,7 @@ export default class BorderProp implements IProp {
     return this;
   }
 
-  setBorderRight(border: borderDef): BorderProp {
+  setBorderRight(border: IBorder): BorderProp {
     let borderStr = `${border.style}`;
     border.width ? (borderStr += ` ${border.width}`) : false;
     border.color ? (borderStr += ` ${colorToString(border.color)}`) : false;
@@ -42,7 +37,7 @@ export default class BorderProp implements IProp {
     return this;
   }
 
-  setBorderTop(border: borderDef): BorderProp {
+  setBorderTop(border: IBorder): BorderProp {
     let borderStr = `${border.style}`;
     border.width ? (borderStr += ` ${border.width}`) : false;
     border.color ? (borderStr += ` ${colorToString(border.color)}`) : false;
@@ -50,7 +45,7 @@ export default class BorderProp implements IProp {
     return this;
   }
 
-  setBorderBottom(border: borderDef): BorderProp {
+  setBorderBottom(border: IBorder): BorderProp {
     let borderStr = `${border.style}`;
     border.width ? (borderStr += ` ${border.width}`) : false;
     border.color ? (borderStr += ` ${colorToString(border.color)}`) : false;

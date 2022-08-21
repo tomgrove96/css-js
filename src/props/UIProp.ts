@@ -1,12 +1,11 @@
 import * as Type from "../Type";
 import IProp from "./IProp";
-
-type uiDef = { appearance: Type.appearance; cursor?: Type.cursor; resize?: Type.resize };
+import IUI from "../interfaces/IUI";
 
 export default class UIProp implements IProp {
   private props: Type.propType;
 
-  constructor(ui: uiDef) {
+  constructor(ui: IUI) {
     this.props = new Map();
 
     if (ui) {

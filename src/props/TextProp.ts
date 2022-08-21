@@ -1,23 +1,17 @@
-import IProp from "./IProp";
 import * as Type from "../Type";
-
-type textDef = {
-  value: string;
-  align?: Type.textAlign;
-  decoration?: Type.textDecoration;
-  direction?: Type.textDirection;
-};
+import IProp from "./IProp";
+import IText from "../interfaces/IText";
 
 export default class TextProp implements IProp {
   private props: Type.propType;
 
-  constructor(text?: textDef) {
+  constructor(text?: IText) {
     this.props = new Map();
 
     if (text) this.setText(text);
   }
 
-  setText(text: textDef): TextProp {
+  setText(text: IText): TextProp {
     this.setValue(text.value);
     text.align ? this.setAlign(text.align) : false;
     text.decoration ? this.setDecoration(text.decoration) : false;

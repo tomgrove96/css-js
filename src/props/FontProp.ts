@@ -1,25 +1,19 @@
-import IBuilder from "./IProp";
 import * as Type from "../Type";
+import IProp from "./IProp";
+import IFont from "../interfaces/IFont";
+import IColor from "../interfaces/IColor";
 import { colorToString } from "../Color";
 
-type fontDef = {
-  family: Type.fontFamily;
-  size?: Type.fontSize;
-  weight?: Type.fontWeight;
-  color?: Type.IColor;
-  style?: Type.fontStyle;
-};
-
-export default class FontProp implements IBuilder {
+export default class FontProp implements IProp {
   private props: Type.propType;
 
-  constructor(font?: fontDef) {
+  constructor(font?: IFont) {
     this.props = new Map();
 
     if (font) this.setFont(font);
   }
 
-  setFont(font: fontDef): FontProp {
+  setFont(font: IFont): FontProp {
     this.setFamily(font.family);
     font.size ? this.setSize(font.size) : false;
     font.weight ? this.setWeight(font.weight) : false;
@@ -48,7 +42,7 @@ export default class FontProp implements IBuilder {
     return this;
   }
 
-  setColor(color: Type.IColor): FontProp {
+  setColor(color: IColor): FontProp {
     this.props.set("color", colorToString(color));
     return this;
   }
