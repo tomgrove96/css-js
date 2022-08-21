@@ -5,7 +5,7 @@ import { colorToString } from "../Color";
 type borderDef = {
   style: Type.borderStyle;
   width?: Type.borderWidth;
-  color?: Type.Color;
+  color?: Type.IColor;
 };
 
 export default class BorderProp implements IProp {

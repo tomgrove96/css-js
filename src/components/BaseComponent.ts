@@ -1,10 +1,10 @@
 import IProp from "../props/IProp";
 import * as Type from "../Type";
 
-export default class Component {
+export default class BaseComponent {
   id: string;
   props: IProp[];
-  children: Component[];
+  children: BaseComponent[];
 
   constructor(id: string, props: IProp[]) {
     this.id = id;
@@ -12,16 +12,17 @@ export default class Component {
     this.children = [];
   }
 
-  add(component: Component): Component {
+  add(component: BaseComponent): BaseComponent {
     if (this.children.includes(component)) return this;
     this.children.push(component);
     return this;
   }
 
   pack() {
-    const q: Component[] = [];
-    q.push(this);
     let result = this.getComponentHTML(this.mergeProps(this.props));
+
+    const q: BaseComponent[] = [];
+    q.push(this);
 
     while (q.length > 0) {
       const next = q.shift();

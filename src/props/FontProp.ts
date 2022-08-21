@@ -6,7 +6,7 @@ type fontDef = {
   family: Type.fontFamily;
   size?: Type.fontSize;
   weight?: Type.fontWeight;
-  color?: Type.Color;
+  color?: Type.IColor;
   style?: Type.fontStyle;
 };
 
@@ -48,7 +48,7 @@ export default class FontProp implements IBuilder {
     return this;
   }
 
-  setColor(color: Type.Color): FontProp {
+  setColor(color: Type.IColor): FontProp {
     this.props.set("color", colorToString(color));
     return this;
   }

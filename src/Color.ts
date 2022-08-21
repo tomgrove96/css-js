@@ -1,4 +1,4 @@
-import { Color } from "./Type";
+import { IColor } from "./Type";
 
 export const ALICE_BLUE = { r: 240, g: 248, b: 255 };
 export const ANTIQUE_WHITE = { r: 250, g: 235, b: 215 };
@@ -142,37 +142,7 @@ export const WHITE_SMOKE = { r: 245, g: 245, b: 245 };
 export const YELLOW = { r: 255, g: 255, b: 0 };
 export const YELLOW_GREEN = { r: 154, g: 205, b: 250 };
 
-export class RGB implements Color {
-  r = 0;
-  g = 0;
-  b = 0;
-
-  constructor(r: number, g: number, b: number) {
-    this.r = r;
-    this.g = g;
-    this.b = b;
-  }
-}
-
-export class RGBA implements Color {
-  r = 0;
-  g = 0;
-  b = 0;
-  a = 1;
-
-  static fromRGB(rgb: RGB, alpha: number): RGBA {
-    return new this(rgb.r, rgb.g, rgb.b, alpha);
-  }
-
-  constructor(r: number, g: number, b: number, a: number) {
-    this.r = r;
-    this.g = g;
-    this.b = b;
-    this.a = a;
-  }
-}
-
-export function colorToString(color: Color): string {
+export function colorToString(color: IColor): string {
   if (!color.a) return `rgb(${color.r}, ${color.g}, ${color.b})`;
   if (color.a || color.a === 0) return `rgba(${color.r}, ${color.g}, ${color.b}, ${color.a})`;
   return "";
