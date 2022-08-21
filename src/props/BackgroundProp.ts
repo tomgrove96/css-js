@@ -1,5 +1,5 @@
 import * as Type from "../Type";
-import IProp from "./IProp";
+import IProp from "../interfaces/IProp";
 import IBackground from "../interfaces/IBackground";
 import IColor from "../interfaces/IColor";
 

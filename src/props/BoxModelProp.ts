@@ -1,5 +1,5 @@
 import * as Type from "../Type";
-import IProp from "./IProp";
+import IProp from "../interfaces/IProp";
 import IBoxModel from "../interfaces/IBoxModel";
 
 export default class BoxModelProp implements IProp {

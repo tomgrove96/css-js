@@ -1,5 +1,5 @@
 import * as Type from "../Type";
-import IProp from "./IProp";
+import IProp from "../interfaces/IProp";
 import IText from "../interfaces/IText";
 
 export default class TextProp implements IProp {

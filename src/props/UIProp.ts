@@ -1,5 +1,5 @@
 import * as Type from "../Type";
-import IProp from "./IProp";
+import IProp from "../interfaces/IProp";
 import IUI from "../interfaces/IUI";
 
 export default class UIProp implements IProp {

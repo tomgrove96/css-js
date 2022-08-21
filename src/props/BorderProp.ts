@@ -1,5 +1,5 @@
 import * as Type from "../Type";
-import IProp from "./IProp";
+import IProp from "../interfaces/IProp";
 import IBorder from "../interfaces/IBorder";
 import { colorToString } from "../Color";
 

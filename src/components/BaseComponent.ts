@@ -1,5 +1,5 @@
 import * as Type from "../Type";
-import IProp from "../props/IProp";
+import IProp from "../interfaces/IProp";
 import UIEventManager from "../UIEventManager";
 
 export default class BaseComponent {
