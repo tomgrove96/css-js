@@ -1,10 +1,7 @@
 import "./style.css";
 import * as Color from "./Color";
-import BaseComponent from "./components/BaseComponent";
-import BackgroundProp from "./props/BackgroundProp";
-import BoxModelProp from "./props/BoxModelProp";
-import BorderProp from "./props/BorderProp";
-import BasicText from "./components/BasicText";
+import { BaseComponent, BasicText } from "./components/Components";
+import { BackgroundProp, BorderProp, BoxModelProp } from "./props/Props";
 
 const backgroundProp = new BackgroundProp({ color: Color.BLACK });
 const boxModelProp = new BoxModelProp({ display: "block", width: "4rem", height: "4rem" });
