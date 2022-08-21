@@ -1,5 +1,6 @@
 import * as Type from "../Type";
 import IProp from "../props/IProp";
+import UIEventManager from "../UIEventManager";
 
 export default class BaseComponent {
   id: string;
@@ -15,6 +16,11 @@ export default class BaseComponent {
   add(component: BaseComponent): BaseComponent {
     if (this.children.includes(component)) return this;
     this.children.push(component);
+    return this;
+  }
+
+  addEventListener(event: string, cb: () => void): BaseComponent {
+    UIEventManager.getInstance().addEventListener(event, { componentId: this.id, cb: cb });
     return this;
   }
 

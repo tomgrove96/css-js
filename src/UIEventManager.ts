@@ -1,26 +1,26 @@
-import * as Type from "./Type";
+import IEvent from "./interfaces/IEvent";
 
 export default class UIEventManager {
-  private events: Map<string, Type.eventDef[]>;
+  private events: Map<string, IEvent[]>;
   private static instance: UIEventManager;
 
   constructor() {
     this.events = new Map();
   }
 
-  addEvent(event: string, eventDef: Type.eventDef) {
+  addEventListener(event: string, cb: IEvent) {
     const eventList = this.events.get(event);
 
     if (!eventList) {
-      this.events.set(event, [eventDef]);
-      this.addEventListener(event);
+      this.events.set(event, [cb]);
+      this.addEvent(event);
       return;
     }
 
-    this.events.set(event, [...eventList, eventDef]);
+    this.events.set(event, [...eventList, cb]);
   }
 
-  private addEventListener = (event: string) => {
+  private addEvent = (event: string) => {
     document.body.addEventListener(event, (e) => {
       e.preventDefault();
       const events = this.events.get(event);
