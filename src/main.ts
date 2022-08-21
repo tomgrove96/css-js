@@ -14,7 +14,7 @@ const name = new BasicText("name", "Tom");
 
 const nameBox = new BaseComponent("mainComponent", [backgroundProp, boxModelProp, borderProp]);
 
-nameBox.add(name);
+//nameBox.add(name);
 
 nameBox.pack();
 
